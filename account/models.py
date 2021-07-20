@@ -6,6 +6,9 @@ class Account (models.Model):
     name = models.CharField(max_length=255, verbose_name='Nombre')
     acronym = models.CharField(max_length=100, verbose_name='Sigla')
 
+    def __str__(self):
+        return 'Name: {}'.format(self.name)
+
 
 class AccountUser (models.Model):
     user = models.OneToOneField(
@@ -24,3 +27,6 @@ class Location(models.Model):
     city = models.CharField(max_length=255, verbose_name='Ciudad')
     account = models.ForeignKey(
         Account, on_delete=models.CASCADE, related_name='locations')
+
+    def __str__(self):
+        return 'Name: {}'.format(self.name)

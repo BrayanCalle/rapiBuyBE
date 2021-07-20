@@ -1,0 +1,7 @@
+DEBUG=True
+SQL_ENGINE=django.db.backends.postgresql_psycopg2
+SQL_NAME=rapi_buy
+SQL_USER=
+SQL_PASSWORD=
+SQL_HOST=localhost
+SQL_PORT= 5432
