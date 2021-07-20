@@ -10,3 +10,5 @@ django-celery-results
 django-rest-swagger
 gunicorn
 pre-commit
+pylint
+pylint-django
