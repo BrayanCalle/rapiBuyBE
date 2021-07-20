@@ -1,11 +1,11 @@
 default_language_version:
-  python: python3.9
+  python: python3
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: v4.0.1
     hooks:
       - id: check-ast
-      -   id: check-yaml
+      - id: check-yaml
       - id: check-case-conflict
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
@@ -18,3 +18,16 @@ repos:
     rev: 19.3b0
     hooks:
     -   id: black
+-   repo: https://github.com/ecugol/pre-commit-hooks-django
+    rev: v0.3.0  # Use the ref you want to point at
+    hooks:
+    -   id: check-untracked-migrations
+        # Optional, if specified, hook will work only on these branches
+        # otherwise it will work on all branches
+        args: ["--branches", "master", "develop"]
+    -   id: check-unapplied-migrations
+    -   id: po-location-format
+        # Mandatory, select one of the following options:
+        # file: show only the file path as location
+        # never: remove all locations
+        args: ["--add-location", "file"]

@@ -11,106 +11,324 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('account', '0001_initial'),
+        ("account", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Cart',
+            name="Cart",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('subtotal', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('tax_iva', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('discount', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('total', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "subtotal",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "tax_iva",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "discount",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "total",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='CartItem',
+            name="CartItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantity', models.PositiveIntegerField(default=0)),
-                ('unit_price', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('total', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('tax_iva', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('discount', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('cart', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='store.cart')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("quantity", models.PositiveIntegerField(default=0)),
+                (
+                    "unit_price",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "total",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "tax_iva",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "discount",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "cart",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="store.cart",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=250, verbose_name='Nombre')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Descripción')),
-                ('image', models.ImageField(default=None, null=True, upload_to='storage/category')),
-                ('account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='categories', to='account.account')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=250, verbose_name="Nombre")),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Descripción"),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        default=None, null=True, upload_to="storage/category"
+                    ),
+                ),
+                (
+                    "account",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="categories",
+                        to="account.account",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Order',
+            name="Order",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('subtotal', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('tax_iva', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('shipping_fee', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('discount', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('total', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('cart', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='order', to='store.cart')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "subtotal",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "tax_iva",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "shipping_fee",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "discount",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "total",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "cart",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="order",
+                        to="store.cart",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255, verbose_name='Nombre')),
-                ('quantity', models.PositiveIntegerField(default=0, verbose_name='Cantidad')),
-                ('image', models.ImageField(default=None, null=True, upload_to='storage/products')),
-                ('price', models.DecimalField(decimal_places=2, default=0.0, max_digits=12, verbose_name='Precio')),
-                ('tax_iva', models.DecimalField(decimal_places=2, default=0.0, max_digits=12, verbose_name='Iva')),
-                ('description', models.TextField(blank=True, null=True, verbose_name='Descripción')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='products', to='store.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255, verbose_name="Nombre")),
+                (
+                    "quantity",
+                    models.PositiveIntegerField(default=0, verbose_name="Cantidad"),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        default=None, null=True, upload_to="storage/products"
+                    ),
+                ),
+                (
+                    "price",
+                    models.DecimalField(
+                        decimal_places=2,
+                        default=0.0,
+                        max_digits=12,
+                        verbose_name="Precio",
+                    ),
+                ),
+                (
+                    "tax_iva",
+                    models.DecimalField(
+                        decimal_places=2, default=0.0, max_digits=12, verbose_name="Iva"
+                    ),
+                ),
+                (
+                    "description",
+                    models.TextField(blank=True, null=True, verbose_name="Descripción"),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="products",
+                        to="store.category",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='OrderItem',
+            name="OrderItem",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantity', models.PositiveIntegerField(default=0)),
-                ('unit_price', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('total', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('tax_iva', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('discount', models.DecimalField(decimal_places=2, default=0.0, max_digits=12)),
-                ('cart_item', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='store.cartitem')),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='store.order')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("quantity", models.PositiveIntegerField(default=0)),
+                (
+                    "unit_price",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "total",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "tax_iva",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "discount",
+                    models.DecimalField(decimal_places=2, default=0.0, max_digits=12),
+                ),
+                (
+                    "cart_item",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="store.cartitem",
+                    ),
+                ),
+                (
+                    "order",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="items",
+                        to="store.order",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Customer',
+            name="Customer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=250, verbose_name='Nombres')),
-                ('last_name', models.CharField(max_length=250, verbose_name='Apellidos')),
-                ('phone_number', models.CharField(max_length=250, verbose_name='Número de teléfono')),
-                ('email', models.EmailField(max_length=254, verbose_name='Correo electrónico')),
-                ('address', models.TextField(verbose_name='Dirección')),
-                ('identification_number', models.CharField(max_length=250, verbose_name='Número de identificación')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=250, verbose_name="Nombres"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=250, verbose_name="Apellidos"),
+                ),
+                (
+                    "phone_number",
+                    models.CharField(max_length=250, verbose_name="Número de teléfono"),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        max_length=254, verbose_name="Correo electrónico"
+                    ),
+                ),
+                ("address", models.TextField(verbose_name="Dirección")),
+                (
+                    "identification_number",
+                    models.CharField(
+                        max_length=250, verbose_name="Número de identificación"
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='cartitem',
-            name='product',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='store.product'),
+            model_name="cartitem",
+            name="product",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="items",
+                to="store.product",
+            ),
         ),
         migrations.AddField(
-            model_name='cart',
-            name='customer',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='carts', to='store.customer'),
+            model_name="cart",
+            name="customer",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="carts",
+                to="store.customer",
+            ),
         ),
         migrations.AddField(
-            model_name='cart',
-            name='location',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='carts', to='account.location'),
+            model_name="cart",
+            name="location",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="carts",
+                to="account.location",
+            ),
         ),
     ]

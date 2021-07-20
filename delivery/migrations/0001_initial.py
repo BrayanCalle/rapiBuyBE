@@ -8,48 +8,143 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ('store', '0001_initial'),
-        ('account', '0001_initial'),
-    ]
+    dependencies = [("store", "0001_initial"), ("account", "0001_initial")]
 
     operations = [
         migrations.CreateModel(
-            name='DeliveryMan',
+            name="DeliveryMan",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=250, verbose_name='Nombres')),
-                ('last_name', models.CharField(max_length=250, verbose_name='Apellidos')),
-                ('phone_number', models.CharField(max_length=250, verbose_name='Número de teléfono')),
-                ('email', models.EmailField(max_length=254, verbose_name='Correo electrónico')),
-                ('address', models.TextField(verbose_name='Dirección')),
-                ('identification_number', models.CharField(max_length=250, verbose_name='Número de identificación')),
-                ('account', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='deliveries', to='account.account')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=250, verbose_name="Nombres"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=250, verbose_name="Apellidos"),
+                ),
+                (
+                    "phone_number",
+                    models.CharField(max_length=250, verbose_name="Número de teléfono"),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        max_length=254, verbose_name="Correo electrónico"
+                    ),
+                ),
+                ("address", models.TextField(verbose_name="Dirección")),
+                (
+                    "identification_number",
+                    models.CharField(
+                        max_length=250, verbose_name="Número de identificación"
+                    ),
+                ),
+                (
+                    "account",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="deliveries",
+                        to="account.account",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Vehicle',
+            name="Vehicle",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('model', models.CharField(max_length=250, verbose_name='Modelo')),
-                ('plate', models.CharField(max_length=250, null=True, verbose_name='Placa')),
-                ('license_plate', models.CharField(max_length=250, null=True, verbose_name='Nombres')),
-                ('year', models.PositiveIntegerField(default=0)),
-                ('vehicle_type', models.CharField(choices=[('CAR', 'CAR'), ('MOTORCYCLE', 'MOTORCYCLE')], default='CAR', max_length=50, verbose_name='Vehículo')),
-                ('delivery_man', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='vehicles', to='delivery.deliveryman')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("model", models.CharField(max_length=250, verbose_name="Modelo")),
+                (
+                    "plate",
+                    models.CharField(max_length=250, null=True, verbose_name="Placa"),
+                ),
+                (
+                    "license_plate",
+                    models.CharField(max_length=250, null=True, verbose_name="Nombres"),
+                ),
+                ("year", models.PositiveIntegerField(default=0)),
+                (
+                    "vehicle_type",
+                    models.CharField(
+                        choices=[("CAR", "CAR"), ("MOTORCYCLE", "MOTORCYCLE")],
+                        default="CAR",
+                        max_length=50,
+                        verbose_name="Vehículo",
+                    ),
+                ),
+                (
+                    "delivery_man",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="vehicles",
+                        to="delivery.deliveryman",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Shipping',
+            name="Shipping",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('shipped_date', models.DateTimeField(auto_now_add=True)),
-                ('delivery_date', models.DateTimeField(null=True)),
-                ('shipping_address', models.CharField(max_length=250)),
-                ('distance', models.PositiveIntegerField(default=0)),
-                ('estado', models.CharField(choices=[('IN_PROGRESS', 'IN_PROGRESS'), ('SHIPPED', 'SHIPPED'), ('CANCELLED', 'CANCELLED'), ('REJECTED', 'REJECTED')], default='IN_PROGRESS', max_length=50, verbose_name='Estado')),
-                ('order', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='shippings', to='store.order')),
-                ('vehicle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='shippings', to='delivery.vehicle')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("shipped_date", models.DateTimeField(auto_now_add=True)),
+                ("delivery_date", models.DateTimeField(null=True)),
+                ("shipping_address", models.CharField(max_length=250)),
+                ("distance", models.PositiveIntegerField(default=0)),
+                (
+                    "estado",
+                    models.CharField(
+                        choices=[
+                            ("IN_PROGRESS", "IN_PROGRESS"),
+                            ("SHIPPED", "SHIPPED"),
+                            ("CANCELLED", "CANCELLED"),
+                            ("REJECTED", "REJECTED"),
+                        ],
+                        default="IN_PROGRESS",
+                        max_length=50,
+                        verbose_name="Estado",
+                    ),
+                ),
+                (
+                    "order",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="shippings",
+                        to="store.order",
+                    ),
+                ),
+                (
+                    "vehicle",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="shippings",
+                        to="delivery.vehicle",
+                    ),
+                ),
             ],
         ),
     ]
