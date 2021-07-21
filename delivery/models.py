@@ -1,5 +1,8 @@
-from account.models import Account
+"""
+models
+"""
 from django.db import models
+from account.models import Account
 from store.models import Order
 
 
@@ -10,7 +13,7 @@ class DeliveryMan(models.Model):
 
     first_name = models.CharField(max_length=250, verbose_name="Nombres")
     last_name = models.CharField(max_length=250, verbose_name="Apellidos")
-    phone_number = models.CharField(max_length=250, verbose_name="Número de teléfono")
+    phone_number = models.CharField(max_length=250, verbose_name=" Número de teléfono")
     email = models.EmailField(verbose_name="Correo electrónico")
     address = models.TextField(verbose_name="Dirección")
     identification_number = models.CharField(
@@ -22,6 +25,10 @@ class DeliveryMan(models.Model):
 
 
 class Vehicle(models.Model):
+    """
+    Transporte de repartidor
+    """
+
     TYPE = (("CAR", "CAR"), ("MOTORCYCLE", "MOTORCYCLE"))
     model = models.CharField(max_length=250, verbose_name="Modelo")
     plate = models.CharField(max_length=250, null=True, verbose_name="Placa")
@@ -36,6 +43,10 @@ class Vehicle(models.Model):
 
 
 class Shipping(models.Model):
+    """
+    Detalle de envio
+    """
+
     ESTADO = (
         ("IN_PROGRESS", "IN_PROGRESS"),
         ("SHIPPED", "SHIPPED"),

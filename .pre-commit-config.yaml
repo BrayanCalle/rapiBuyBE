@@ -39,7 +39,5 @@ repos:
     hooks:
       - id: pylint
         exclude: "[a-zA-Z]*/(migrations)/(.)*"
-        args: [ "--load-plugins=pylint-django"]
-        additional_dependencies: [
-            pylint_django,
-        ]
+        args: [ "--load-plugins=pylint_django"]
+        additional_dependencies: [ pylint-django, django]
