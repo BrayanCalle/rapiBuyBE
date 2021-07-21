@@ -1,5 +1,4 @@
 default_language_version:
-  # default language version for each language used in the repository
   python: python3.9
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -39,5 +38,9 @@ repos:
     hooks:
       - id: pylint
         exclude: "[a-zA-Z]*/(migrations)/(.)*"
-        args: [ "--load-plugins=pylint_django"]
-        additional_dependencies: [ pylint-django, django]
+        args: [ "--load-plugins=pylint_django", "--django-settings-module=rapiBuy.settings"]
+        additional_dependencies: [ pylint-django, django, django-environ, djangorestframework, django-rest-swagger, psycopg2]
+# -   repo: https://github.com/pre-commit/mirrors-autopep8
+#     rev: ''  # Use the sha / tag you want to point at
+#     hooks:
+#     -   id: autopep8
