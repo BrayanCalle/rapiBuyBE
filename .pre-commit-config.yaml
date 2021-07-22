@@ -40,7 +40,3 @@ repos:
         exclude: "[a-zA-Z]*/(migrations)/(.)*"
         args: [ "--load-plugins=pylint_django", "--django-settings-module=rapiBuy.settings"]
         additional_dependencies: [ pylint-django, django, django-environ, djangorestframework, django-rest-swagger, psycopg2]
-# -   repo: https://github.com/pre-commit/mirrors-autopep8
-#     rev: ''  # Use the sha / tag you want to point at
-#     hooks:
-#     -   id: autopep8
