@@ -1,9 +1,16 @@
-from account.models import Account, Location
-from django.contrib.auth.models import User
+"""
+Models
+"""
 from django.db import models
+from django.contrib.auth import get_user_model
+from account.models import Account, Location
 
 
 class Customer(models.Model):
+    """
+    Customer model
+    """
+
     first_name = models.CharField(max_length=250, verbose_name="Nombres")
     last_name = models.CharField(max_length=250, verbose_name="Apellidos")
     phone_number = models.CharField(max_length=250, verbose_name="Número de teléfono")
@@ -12,16 +19,23 @@ class Customer(models.Model):
     identification_number = models.CharField(
         max_length=250, verbose_name="Número de identificación"
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
 
 class Category(models.Model):
+    """
+    Category model
+    """
+
     name = models.CharField(max_length=250, verbose_name="Nombre")
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     image = models.ImageField(upload_to="storage/category", null=True, default=None)
     account = models.ForeignKey(
         Account, on_delete=models.CASCADE, related_name="categories"
     )
+
+    def __str__(self):
+        return "{}-{}".format(self.name, self.account)
 
 
 class Product(models.Model):
@@ -48,6 +62,10 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
+    """
+    Cart model
+    """
+
     subtotal = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     tax_iva = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     discount = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
@@ -61,6 +79,10 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):
+    """
+    CartItem model
+    """
+
     quantity = models.PositiveIntegerField(default=0)
     unit_price = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     total = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
@@ -71,6 +93,10 @@ class CartItem(models.Model):
 
 
 class Order(models.Model):
+    """
+    Order model
+    """
+
     subtotal = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     tax_iva = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     shipping_fee = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
@@ -80,6 +106,10 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """
+    OrderItem model
+    """
+
     quantity = models.PositiveIntegerField(default=0)
     unit_price = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     total = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)

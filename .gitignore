@@ -108,3 +108,4 @@ venv.bak/
 /staticfiles
 /docs
 .DS_Store
+/media
