@@ -3,7 +3,7 @@ forms
 """
 from django import forms
 from django.contrib.auth import get_user_model
-from account.models import AccountUser
+from app.account.models import AccountUser
 
 
 class AccountUserForm(forms.ModelForm):

@@ -14,8 +14,10 @@ known_first_party = []
 disable = """
     line-too-long,
     abstract-method,
-    bare-except,
     no-member,
+    unused-import,
+    missing-module-docstring,
+    missing-class-docstring
 """
 enable = "useless-suppression"
 

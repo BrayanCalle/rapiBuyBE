@@ -4,7 +4,7 @@ admin
 import os
 
 from django.contrib import admin
-from store.models import Category, Product
+from app.store.models import Category, Product
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -25,7 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
                 old_img = obj.__class__.objects.get(id=obj.id).image.path
                 try:
                     new_img = obj.image.path
-                except:
+                except ValueError:
                     new_img = None
 
                 if old_img != new_img:
@@ -68,7 +68,7 @@ class ProductAdmin(admin.ModelAdmin):
                 old_img = obj.__class__.objects.get(id=obj.id).image.path
                 try:
                     new_img = obj.image.path
-                except:
+                except ValueError:
                     new_img = None
 
                 if old_img != new_img:

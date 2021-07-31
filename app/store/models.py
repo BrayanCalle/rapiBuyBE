@@ -2,24 +2,8 @@
 Models
 """
 from django.db import models
-from django.contrib.auth import get_user_model
-from account.models import Account, Location
-
-
-class Customer(models.Model):
-    """
-    Customer model
-    """
-
-    first_name = models.CharField(max_length=250, verbose_name="Nombres")
-    last_name = models.CharField(max_length=250, verbose_name="Apellidos")
-    phone_number = models.CharField(max_length=250, verbose_name="Número de teléfono")
-    email = models.EmailField(verbose_name="Correo electrónico")
-    address = models.TextField(verbose_name="Dirección")
-    identification_number = models.CharField(
-        max_length=250, verbose_name="Número de identificación"
-    )
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+from app.customer.models import Customer
+from app.account.models import Account, Location
 
 
 class Category(models.Model):
