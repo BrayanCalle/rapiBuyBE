@@ -33,10 +33,3 @@ repos:
         # file: show only the file path as location
         # never: remove all locations
         args: ["--add-location", "file"]
--   repo: https://github.com/pycqa/pylint
-    rev: v2.9.3
-    hooks:
-      - id: pylint
-        exclude: "[a-zA-Z]*/(migrations)/(.)*"
-        args: [ "--load-plugins=pylint_django", "--django-settings-module=rapiBuy.settings"]
-        additional_dependencies: [ pylint-django, django, django-environ, djangorestframework, django-rest-swagger, psycopg2]
