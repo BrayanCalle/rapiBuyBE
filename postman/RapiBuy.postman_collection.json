@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "0cddbf0a-927c-43f4-a348-5077fb4fa1e2",
+		"name": "RapiBuy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/api/v1/account/accounts",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"account",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
