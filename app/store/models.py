@@ -8,7 +8,7 @@ from app.account.models import Account, Location
 
 class Category(models.Model):
     """
-    Category model
+    Category model, Clasificación de los diferentes productos.
     """
 
     name = models.CharField(max_length=250, verbose_name="Nombre")
@@ -47,7 +47,7 @@ class Product(models.Model):
 
 class Cart(models.Model):
     """
-    Cart model
+    Cart model, Contiene el detalle del carrito de compras.
     """
 
     subtotal = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
@@ -64,7 +64,7 @@ class Cart(models.Model):
 
 class CartItem(models.Model):
     """
-    CartItem model
+    CartItem model, Producto o ítem que esta dentro del detalle del carrito de compras.
     """
 
     quantity = models.PositiveIntegerField(default=0)
@@ -78,12 +78,12 @@ class CartItem(models.Model):
 
 class Order(models.Model):
     """
-    Order model
+    Order model, Contiene el detalle de la orden.
     """
 
     subtotal = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     tax_iva = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
-    shipping_fee = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
+    shipping_fee = models.DecimalField(max_digits=12, decimal_places=2, default=0.0) #Gastos de envío
     discount = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     total = models.DecimalField(max_digits=12, decimal_places=2, default=0.0)
     cart = models.OneToOneField(Cart, on_delete=models.CASCADE, related_name="order")
@@ -91,7 +91,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     """
-    OrderItem model
+    OrderItem model, Producto o ítem que esta dentro del detalle de la orden.
     """
 
     quantity = models.PositiveIntegerField(default=0)

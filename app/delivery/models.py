@@ -9,6 +9,7 @@ from app.store.models import Order
 class DeliveryMan(models.Model):
     """
     Person in charge of order delivery
+    Persona encargada de la entrega del pedido
     """
 
     first_name = models.CharField(max_length=250, verbose_name="Nombres")

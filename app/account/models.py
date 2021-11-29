@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model
 
 class Account(models.Model):
     """
-    Account model
+    Account model de Empresa u Supermercado
     """
 
     name = models.CharField(max_length=255, verbose_name="Nombre")
@@ -19,7 +19,7 @@ class Account(models.Model):
 
 class AccountUser(models.Model):
     """
-    Account user model
+    Account user model, Persona o Usuario encargado de la cuenta de la Empresa
     """
 
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
@@ -28,7 +28,7 @@ class AccountUser(models.Model):
 
 class Location(models.Model):
     """
-    Location model
+    Location model u sucursal
     """
 
     name = models.CharField(max_length=255, verbose_name="Nombre")
