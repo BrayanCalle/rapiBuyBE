@@ -11,7 +11,7 @@ class Category(models.Model):
     Category model, Clasificación de los diferentes productos.
     """
 
-    name = models.CharField(max_length=250, verbose_name="Nombre")
+    name = models.CharField(max_length=80, verbose_name="Nombre")
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     image = models.ImageField(upload_to="storage/category", null=True, default=None)
     account = models.ForeignKey(
@@ -27,7 +27,7 @@ class Product(models.Model):
     Contiene los datos de un producto que se manejan dentro de un negocio
     """
 
-    name = models.CharField(max_length=255, verbose_name="Nombre")
+    name = models.CharField(max_length=100, verbose_name="Nombre")
     quantity = models.PositiveIntegerField(verbose_name="Cantidad", default=0)
     image = models.ImageField(upload_to="storage/products", null=True, default=None)
     price = models.DecimalField(
