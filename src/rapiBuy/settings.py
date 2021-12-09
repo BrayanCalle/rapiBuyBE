@@ -44,10 +44,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_swagger",
-    "app.account",
-    "app.store",
-    "app.delivery",
-    "app.customer",
+    "account",
+    "store",
+    "delivery",
+    "customer",
 ]
 
 MIDDLEWARE = [
