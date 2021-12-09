@@ -8,4 +8,4 @@ cp .env.example .env
 
 
 # Build b2b api image
-docker build -f ./dockerfiles/Dockerfile --ssh default=$1 -t b2b/api:latest .
+docker build -f ./dockerfiles/Dockerfile  -t rapi_buy/api:latest .
