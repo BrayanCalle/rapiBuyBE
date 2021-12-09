@@ -1,31 +1,19 @@
 [tool.black]
-line-length = 88
+line-length = 100
 include = '\.pyi?$'
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 88
-default_section = "THIRDPARTY"
-known_third_party = []
-known_first_party = []
-
-[tool.pylint.MESSAGE_CONTROL]
-disable = """
-    line-too-long,
-    abstract-method,
-    no-member,
-    unused-import,
-    missing-module-docstring,
-    missing-class-docstring
-"""
-enable = "useless-suppression"
-
-[tool.pylint.REPORTS]
-reports="no"
-
-[tool.pylint.FORMAT]
-max-line-length="88"
-
-[tool.pylint.BASIC]
-good-names = "_,i,e,setUp,tearDown,maxDiff"
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+  | node_modules
+  | static_files
+)/
+'''

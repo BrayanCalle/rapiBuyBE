@@ -15,7 +15,6 @@ services:
     restart: always
     depends_on:
       - db
-      - cache
     links:
       - db
     env_file:
