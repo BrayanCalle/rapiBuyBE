@@ -19,7 +19,7 @@ RUN chown -R container_user:container_user /opt/logs
 
 RUN pip3 install pipenv
 # Run pipenv install with ssh forwarded from host
-RUN --mount=type=ssh,id=default pipenv install --system
+RUN pipenv install
 
 EXPOSE 8000
 

@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-filter = "*"
+psycopg2-binary = "*"
+drf-yasg = "*"
+ipython = "*"
+django-environ = "*"
+coverage = "*"
+faker = "*"
+django-oauth-toolkit = "*"
+django-redis = "*"
+factory-boy = "*"
+gunicorn = "*"
+pyyaml = "*"
+uritemplate = "*"
+drf-spectacular = "*"
+django-cors-headers = "*"
+djangorestframework-simplejwt = "*"
+django-extensions = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
