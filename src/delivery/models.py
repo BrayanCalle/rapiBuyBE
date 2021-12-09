@@ -2,8 +2,8 @@
 models
 """
 from django.db import models
-from app.account.models import Account
-from app.store.models import Order
+from account.models import Account
+from store.models import Order
 
 
 class DeliveryMan(models.Model):

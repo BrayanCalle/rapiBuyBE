@@ -2,8 +2,8 @@
 Models
 """
 from django.db import models
-from app.customer.models import Customer
-from app.account.models import Account, Location
+from customer.models import Customer
+from account.models import Account, Location
 
 
 class Category(models.Model):

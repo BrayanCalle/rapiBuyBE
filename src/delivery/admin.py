@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.delivery.models import DeliveryMan, Vehicle, Shipping
+from delivery.models import DeliveryMan, Vehicle, Shipping
 
 # Register your models here.
 

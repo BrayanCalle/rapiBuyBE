@@ -3,8 +3,8 @@ admin
 """
 from django.contrib import admin
 
-from app.account.forms import AccountUserForm
-from app.account.models import Account, AccountUser, Location
+from account.forms import AccountUserForm
+from account.models import Account, AccountUser, Location
 
 
 class LocationInline(admin.TabularInline):

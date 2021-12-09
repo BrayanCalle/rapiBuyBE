@@ -4,7 +4,7 @@ admin
 import os
 
 from django.contrib import admin
-from app.store.models import Category, Product
+from store.models import Category, Product
 
 
 class CategoryAdmin(admin.ModelAdmin):

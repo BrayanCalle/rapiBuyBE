@@ -2,7 +2,7 @@
 Admin
 """
 from django.contrib import admin
-from app.customer.models import Customer, Address
+from customer.models import Customer, Address
 
 # Register your models here.
 class AddressInline(admin.TabularInline):

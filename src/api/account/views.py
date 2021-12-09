@@ -1,5 +1,5 @@
 from api.account.serializers import AccountSerializer
-from app.account.models import Account
+from account.models import Account
 
 from rest_framework import permissions, viewsets
 
