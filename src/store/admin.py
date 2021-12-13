@@ -3,9 +3,14 @@ admin
 """
 import os
 
+<<<<<<< HEAD
 from django.contrib import admin
 
 from store.models import Category, Product
+=======
+from app.store.models import Category, Product
+from django.contrib import admin
+>>>>>>> 12fe739 (Configuring containers.)
 
 
 class CategoryAdmin(admin.ModelAdmin):

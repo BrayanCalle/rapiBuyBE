@@ -2,4 +2,4 @@
 set -a
 [ -f .env ] && . .env
 
-docker build --no-cache -f dockerfiles/Dockerfile -t rapi_buy/api:latest .
+docker build --no-cache -f Dockerfile -t rapi_buy/api:latest .

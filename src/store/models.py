@@ -1,10 +1,16 @@
 """
 Models
 """
+<<<<<<< HEAD
 from django.db import models
 
 from account.models import Account, Location
 from customer.models import Customer
+=======
+from app.account.models import Account, Location
+from app.customer.models import Customer
+from django.db import models
+>>>>>>> 12fe739 (Configuring containers.)
 
 
 class Category(models.Model):

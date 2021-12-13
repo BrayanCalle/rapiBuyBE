@@ -1,10 +1,14 @@
 """
 Admin
 """
+from app.customer.models import Address, Customer
 from django.contrib import admin
 
+<<<<<<< HEAD
 from customer.models import Address, Customer
 
+=======
+>>>>>>> 12fe739 (Configuring containers.)
 
 # Register your models here.
 class AddressInline(admin.TabularInline):
