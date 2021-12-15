@@ -4,6 +4,7 @@ admin
 import os
 
 from django.contrib import admin
+
 from store.models import Category, Product
 
 
@@ -15,9 +16,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "image", "description", "account")
     search_fields = ("name", "description", "account")
     list_filter = ("name", "description", "account")
-    fieldsets = (
-        (("Datos Básicos"), {"fields": ("account", "name", "image", "description")}),
-    )
+    fieldsets = ((("Datos Básicos"), {"fields": ("account", "name", "image", "description")}),)
 
     def save_model(self, request, obj, form, change):
         try:

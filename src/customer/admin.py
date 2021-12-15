@@ -2,7 +2,9 @@
 Admin
 """
 from django.contrib import admin
-from customer.models import Customer, Address
+
+from customer.models import Address, Customer
+
 
 # Register your models here.
 class AddressInline(admin.TabularInline):
@@ -16,12 +18,17 @@ class AddressInline(admin.TabularInline):
     fields = ("phone_number", "street", "city", "country", "postal_code")
 
 
-
-class CustomerAdmin (admin.ModelAdmin):
+class CustomerAdmin(admin.ModelAdmin):
     list_display = ("first_name", "last_name", "identification_number")
     search_fields = ("first_name", "last_name", "identification_number")
     list_filter = ("first_name", "last_name", "identification_number")
-    fieldsets = ((("Información de Cuenta"), {"fields": ("first_name", "last_name", "email", "identification_number","user")}),)
+    fieldsets = (
+        (
+            ("Información de Cuenta"),
+            {"fields": ("first_name", "last_name", "email", "identification_number", "user")},
+        ),
+    )
     inlines = (AddressInline,)
+
 
 admin.site.register(Customer, CustomerAdmin)
