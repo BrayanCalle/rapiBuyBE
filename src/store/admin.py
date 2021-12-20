@@ -13,10 +13,10 @@ class CategoryAdmin(admin.ModelAdmin):
     Admin Category
     """
 
-    list_display = ("name", "image", "description", "account")
+    list_display = ("name", "description", "account")
     search_fields = ("name", "description", "account")
     list_filter = ("name", "description", "account")
-    fieldsets = ((("Datos Básicos"), {"fields": ("account", "name", "image", "description")}),)
+    fieldsets = ((("Datos Básicos"), {"fields": ("account", "name", "description")}),)
 
     def save_model(self, request, obj, form, change):
         try:
@@ -41,7 +41,7 @@ class ProductAdmin(admin.ModelAdmin):
     Admin Product
     """
 
-    list_display = ("name", "image", "quantity", "price", "category", "description")
+    list_display = ("name", "quantity", "price", "category", "description")
     search_fields = ("name", "description", "category")
     list_filter = ("name", "description", "category")
     fieldsets = (
@@ -51,7 +51,6 @@ class ProductAdmin(admin.ModelAdmin):
                 "fields": (
                     "category",
                     "name",
-                    "image",
                     "quantity",
                     "price",
                     "tax_iva",

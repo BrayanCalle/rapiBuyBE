@@ -10,24 +10,36 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
-environ.Env.read_env()
+env = environ.Env(
+    # set casting, default value
+    CORS=(bool, False),
+    ENVIRONMENT=(str, "DEVELOP"),
+    DJANGO_SECRET_KEY=(str, "_s39^vn!w8l38^!9def(i39z9_q!knnkde_%fy-id-r(g9#3l#"),  # nosec
+)
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = env("DJANGO_SECRET_KEY")
+
+ENVIRONMENT = env("ENVIRONMENT")
+
+DEVELOP = ENVIRONMENT == "DEVELOP"
+STAGING = ENVIRONMENT == "STAGING"
+PRODUCTION = ENVIRONMENT == "PRODUCTION"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (env("DEBUG"),)
+DEBUG = DEVELOP
 
 ALLOWED_HOSTS = []
 
@@ -42,8 +54,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "corsheaders",
+    "rest_framework_simplejwt",
     "rest_framework.authtoken",
-    "rest_framework_swagger",
     "account",
     "store",
     "delivery",
@@ -95,12 +108,12 @@ WSGI_APPLICATION = "rapiBuy.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": env("SQL_ENGINE"),
-        "NAME": env("SQL_NAME"),
-        "USER": env("SQL_USER"),
-        "PASSWORD": env("SQL_PASSWORD"),
-        "HOST": env("SQL_HOST"),
-        "PORT": env("SQL_PORT"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("POSTGRES_DB"),
+        "USER": env("POSTGRES_USER"),
+        "PASSWORD": env("POSTGRES_PASSWORD"),
+        "HOST": env("POSTGRES_HOST"),
+        "PORT": "5432",
     }
 }
 

@@ -23,7 +23,7 @@ services:
   db:
     image: postgres:13.3
     restart: unless-stopped
-    container_name: rapi_buy_db
+    container_name: rapi_buy
     ports:
       - "5432:5432"
     volumes:
@@ -44,7 +44,6 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/conf/nginx-proxy-dev.conf:/etc/nginx/conf.d/default.conf:ro
       - ./ssl/concatenated.cer:/etc/ssl/concatenated.cer
       - ./ssl/private_key.key:/etc/ssl/private_key.key
       - ./src/static:/opt/backend/static
