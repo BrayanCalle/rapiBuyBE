@@ -22,7 +22,7 @@ env = environ.Env(
     # set casting, default value
     CORS=(bool, False),
     ENVIRONMENT=(str, "DEVELOP"),
-    DJANGO_SECRET_KEY=(str, "insecure-5IbxjyIultTFTHjYgXZZgtMr3k-X8SqH27KkfheqRLw"),  # nosec
+    DJANGO_SECRET_KEY=(str, "_s39^vn!w8l38^!9def(i39z9_q!knnkde_%fy-id-r(g9#3l#"),  # nosec
 )
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
@@ -30,7 +30,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 ENVIRONMENT = env("ENVIRONMENT")
 

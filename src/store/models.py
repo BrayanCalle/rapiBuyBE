@@ -1,16 +1,10 @@
 """
 Models
 """
-<<<<<<< HEAD
 from django.db import models
 
 from account.models import Account, Location
 from customer.models import Customer
-=======
-from app.account.models import Account, Location
-from app.customer.models import Customer
-from django.db import models
->>>>>>> 12fe739 (Configuring containers.)
 
 
 class Category(models.Model):
@@ -20,7 +14,6 @@ class Category(models.Model):
 
     name = models.CharField(max_length=80, verbose_name="Nombre")
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
-    image = models.ImageField(upload_to="storage/category", null=True, default=None)
     account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="categories")
 
     def __str__(self):
@@ -34,7 +27,6 @@ class Product(models.Model):
 
     name = models.CharField(max_length=100, verbose_name="Nombre")
     quantity = models.PositiveIntegerField(verbose_name="Cantidad", default=0)
-    image = models.ImageField(upload_to="storage/products", null=True, default=None)
     price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Precio", default=0.0)
     tax_iva = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Iva", default=0.0)
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)

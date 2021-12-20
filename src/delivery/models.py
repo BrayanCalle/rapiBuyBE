@@ -1,16 +1,10 @@
 """
 models
 """
-<<<<<<< HEAD
 from django.db import models
 
 from account.models import Account
 from store.models import Order
-=======
-from app.account.models import Account
-from app.store.models import Order
-from django.db import models
->>>>>>> 12fe739 (Configuring containers.)
 
 
 class DeliveryMan(models.Model):

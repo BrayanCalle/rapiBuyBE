@@ -23,6 +23,7 @@ drf-spectacular = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 django-extensions = "*"
+pillow = "*"
 
 [dev-packages]
 

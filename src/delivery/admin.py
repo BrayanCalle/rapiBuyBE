@@ -1,10 +1,6 @@
-from app.delivery.models import DeliveryMan, Shipping, Vehicle
 from django.contrib import admin
-<<<<<<< HEAD
 
 from delivery.models import DeliveryMan, Vehicle
-=======
->>>>>>> 12fe739 (Configuring containers.)
 
 # Register your models here.
 
