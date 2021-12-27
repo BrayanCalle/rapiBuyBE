@@ -3,6 +3,6 @@ ignore = E203, E266, W503, F403
 max-line-length = 100
 max-complexity = 15
 select = B,C,E,F,W,T4,B9
-exclude = */migrations/*,settings.py,local_settings.py,local_settings.example.py,ipython_config.py
+exclude = */migrations/*,*/settings/*,settings.py,local_settings.py,local_settings.example.py,ipython_config.py
 show-source = true
 statistics = true

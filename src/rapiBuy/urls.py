@@ -19,9 +19,6 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("api/v1/account/", include("api.account.urls")),
-]
+urlpatterns = [path("admin/", admin.site.urls), path("api/v1/", include("api.v1.urls"))]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,18 +2,17 @@
 forms
 """
 from django import forms
-from django.contrib.auth import get_user_model
 
-from account.models import AccountUser
+from account.models import User
 
 
-class AccountUserForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     """
     Account user form
     """
 
-    user = forms.ModelChoiceField(queryset=get_user_model().objects.filter(is_superuser=False))
+    user = forms.ModelChoiceField(queryset=User.objects.filter(is_superuser=False))
 
     class Meta:
-        model = AccountUser
+        model = User
         fields = ("user",)

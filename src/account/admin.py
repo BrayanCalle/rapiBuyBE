@@ -3,8 +3,8 @@ admin
 """
 from django.contrib import admin
 
-from account.forms import AccountUserForm
-from account.models import Account, AccountUser, Location
+from account.forms import UserForm
+from account.models import Account, Location, User
 
 
 class LocationInline(admin.TabularInline):
@@ -18,16 +18,16 @@ class LocationInline(admin.TabularInline):
     fields = ("name", "phone_number", "street_address", "email", "city")
 
 
-class AccountUserInline(admin.TabularInline):
+class UserInline(admin.TabularInline):
     """
     Inline User
     """
 
-    model = AccountUser
+    model = User
     verbose_name = "Usuario"
     verbose_name_plural = "Usuarios"
     fields = ("user",)
-    form = AccountUserForm
+    form = UserForm
 
 
 class AccountAdmin(admin.ModelAdmin):
@@ -39,7 +39,7 @@ class AccountAdmin(admin.ModelAdmin):
     search_fields = ("name", "acronym")
     list_filter = ("name", "acronym")
     fieldsets = ((("Información de Cuenta"), {"fields": ("name", "acronym")}),)
-    inlines = (LocationInline, AccountUserInline)
+    inlines = (LocationInline, UserInline)
 
 
 admin.site.register(Account, AccountAdmin)
