@@ -1,8 +1,9 @@
 """
-Models
-"""
-from django.contrib.auth import get_user_model
+Models"""
+
 from django.db import models
+
+from account.models import User
 
 
 class Customer(models.Model):
@@ -14,7 +15,7 @@ class Customer(models.Model):
     last_name = models.CharField(max_length=80, verbose_name="Apellidos")
     email = models.EmailField(verbose_name="Correo electrónico")
     identification_number = models.CharField(max_length=10, verbose_name="Número de identificación")
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return "{}".format(self.first_name)
@@ -30,6 +31,4 @@ class Address(models.Model):
     city = models.CharField(max_length=50, verbose_name="Ciudad")
     country = models.CharField(max_length=50, verbose_name="País")
     postal_code = models.CharField(max_length=20, verbose_name="Código Postal")
-    # barrio = models.CharField(max_length=50, verbose_name="Barrio")
-    # referencia = models.CharField(max_length=100, verbose_name="Referencia")
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)

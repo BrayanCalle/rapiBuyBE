@@ -24,6 +24,56 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    if(pm.response.to.have.status(200)){",
+							"        let jsonData = JSON.parse(responseBody);",
+							"        pm.environment.set(\"AUTH_TOKEN\", jsonData[\"access\"]);",
+							"        pm.environment.set(\"REFRESH_TOKEN\", jsonData[\"refresh\"]);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"jomasloja@gmail.com\",\n    \"password\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/{{CTX}}/auth/token/",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{CTX}}",
+						"auth",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

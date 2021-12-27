@@ -1,7 +1,7 @@
-from api.account.serializers import AccountSerializer
-from account.models import Account
-
 from rest_framework import permissions, viewsets
+
+from account.models import Account
+from api.v1.account.serializers import AccountSerializer
 
 
 class AccountViewSet(viewsets.ReadOnlyModelViewSet):

@@ -18,7 +18,7 @@ repos:
     hooks:
     -   id: isort
         args: ["--profile", "black"]
-        exclude: .venv([23])?|migrations|node_modules|.flake8|.isort.cfg|.pre-commit-config.yaml|README.md|Dockerfile|rapiBuy.settings.py|nginx-proxy-dev.conf|nginx-proxy-prod.conf
+        exclude: .venv([23])?|migrations|node_modules|.flake8|.isort.cfg|.pre-commit-config.yaml|README.md|Dockerfile|settings.py|nginx-proxy-dev.conf|nginx-proxy-prod.conf
 -   repo: https://github.com/psf/black
     rev: 20.8b1
     hooks:
