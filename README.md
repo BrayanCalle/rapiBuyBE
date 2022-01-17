@@ -17,7 +17,7 @@ After install Docker, proceed to install Docker Compose:
 The following is the suggested structure to successfully build this project:
 
 ```
-b2b/                           # root project
+rapyBuyBE/                           # root project
 ├── src/                       # django project
 ├── nginx/                     # nginx conf files
 ├── Dockerfile                 # django dockerfile

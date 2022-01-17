@@ -6,20 +6,96 @@
 	},
 	"item": [
 		{
-			"name": "accounts",
+			"name": "Get Categories",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_URL}}/api/v1/account/accounts",
+					"raw": "{{HOST}}:{{PORT}}/{{CTX}}/categories/",
 					"host": [
-						"{{BASE_URL}}"
+						"{{HOST}}"
 					],
+					"port": "{{PORT}}",
 					"path": [
-						"api",
-						"v1",
-						"account",
-						"accounts"
+						"{{CTX}}",
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accounts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/{{CTX}}/accounts/",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{CTX}}",
+						"accounts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/{{CTX}}/products/?search=mac",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{CTX}}",
+						"products",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "mac"
+						}
 					]
 				}
 			},
@@ -69,6 +145,57 @@
 						"{{CTX}}",
 						"auth",
 						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    if(pm.response.to.have.status(200)){",
+							"        let jsonData = JSON.parse(responseBody);",
+							"        pm.environment.set(\"AUTH_TOKEN\", jsonData[\"access\"]);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refresh",
+							"value": "{{REFRESH_TOKEN}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/{{CTX}}/auth/token/refresh/",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{CTX}}",
+						"auth",
+						"token",
+						"refresh",
 						""
 					]
 				}

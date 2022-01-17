@@ -50,10 +50,10 @@ class ProductAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "category",
+                    "account",
                     "name",
                     "quantity",
                     "price",
-                    "tax_iva",
                     "description",
                 )
             },

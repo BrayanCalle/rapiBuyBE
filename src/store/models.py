@@ -25,12 +25,13 @@ class Product(models.Model):
     Contiene los datos de un producto que se manejan dentro de un negocio
     """
 
+    created_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100, verbose_name="Nombre")
     quantity = models.PositiveIntegerField(verbose_name="Cantidad", default=0)
     price = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Precio", default=0.0)
-    tax_iva = models.DecimalField(max_digits=12, decimal_places=2, verbose_name="Iva", default=0.0)
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
+    account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="products")
 
     def __str__(self):
         return "{} Price: {}".format(self.name, self.price)
