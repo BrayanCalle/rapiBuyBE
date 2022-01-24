@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0cddbf0a-927c-43f4-a348-5077fb4fa1e2",
+		"_postman_id": "c086aa09-dc00-4be6-b5fe-047531ac9f56",
 		"name": "RapiBuy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -89,6 +89,42 @@
 					"path": [
 						"{{CTX}}",
 						"products",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "mac"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Locations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AUTH_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/{{CTX}}/locations/?search=mac",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{CTX}}",
+						"locations",
 						""
 					],
 					"query": [
