@@ -10,6 +10,8 @@ from django.db.models.deletion import PROTECT
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from customer.models import Customer
+
 
 class Account(models.Model):
     """
@@ -82,6 +84,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     account = models.ForeignKey(
         Account, null=True, blank=True, on_delete=PROTECT, related_name="users"
     )
+    customer = models.OneToOneField(Customer, null=True, on_delete=models.CASCADE)
     objects = UserManager()
 
     USERNAME_FIELD = "email"
