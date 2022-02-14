@@ -2,7 +2,7 @@
 Models
 """
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import PermissionsMixin, Group
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.validators import EmailValidator
 from django.db import models
@@ -10,7 +10,11 @@ from django.db.models.deletion import PROTECT
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from django.contrib.auth.models import User
+
 from customer.models import Customer
+
+# from customer.models import Customer
 
 
 class Account(models.Model):
@@ -35,7 +39,8 @@ class UserManager(BaseUserManager):
         if not kwargs.get("username"):
             raise ValueError("Username invalid")
 
-        user = self.model(email=self.normalize_email(email), username=kwargs.get("username"))
+        user = self.model(email=self.normalize_email(email),
+            username=kwargs.get("username"))
 
         user.set_password(password)
         user.save()
@@ -51,7 +56,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class UserNuevo(AbstractBaseUser, PermissionsMixin, Customer):
     username_validator = UnicodeUsernameValidator()
 
     username = models.CharField(
@@ -64,9 +69,11 @@ class User(AbstractBaseUser, PermissionsMixin):
             "unique": _("A user with that username already exists."),
         },
     )
-    first_name = models.CharField(_("first name"), max_length=30, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
-    email = models.EmailField(_("email address"), blank=True, unique=True)
+    # first_name = models.CharField(_("first name"), max_length=30, blank=True)
+    # last_name = models.CharField(_("last name"), max_length=30, blank=True)
+    # phone_number = models.CharField(max_length=20, verbose_name="Número de teléfono", blank=True)
+    email = models.EmailField(_("email address"), unique=True)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="grupos", blank=True, null=True)
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,
@@ -80,11 +87,16 @@ class User(AbstractBaseUser, PermissionsMixin):
             "Unselect this instead of deleting accounts."
         ),
     )
-    date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
-    account = models.ForeignKey(
-        Account, null=True, blank=True, on_delete=PROTECT, related_name="users"
+    is_superuser = models.BooleanField(
+        _("Superuser"),
+        default=False,
+        help_text=_("Designates whether the user is superuser."),
     )
-    customer = models.OneToOneField(Customer, null=True, on_delete=models.CASCADE)
+    date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
+    # account = models.ForeignKey(
+    #     Account, null=True, blank=True, on_delete=PROTECT, related_name="users"
+    # )
+    # customer = models.OneToOneField(Customer, null=True, on_delete=models.CASCADE)
     objects = UserManager()
 
     USERNAME_FIELD = "email"
@@ -103,7 +115,7 @@ class Location(models.Model):
     """
 
     name = models.CharField(max_length=100, verbose_name="Nombre")
-    phone_number = models.CharField(max_length=15, verbose_name="Número de teléfono")
+    phone_number = models.CharField(max_length=15, verbose_name="Número de teléfono", blank=True)
     street_address = models.CharField(max_length=100, verbose_name="Dirección")
     email = models.EmailField(max_length=80, verbose_name="Correo electrónico")
     city = models.CharField(max_length=30, verbose_name="Ciudad")
